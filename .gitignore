@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
+
+# Build output
+dist/
+build/
+
+# Coverage
+coverage/
+
+# Temporary files
+*.tmp
+.cache/
+
+# NOTE: .env should be here but it's commented out
+# This is a common mistake - forgetting to gitignore .env
+# .env
+# .env.local
+# .env.production
