@@ -1,6 +1,5 @@
 // Main API Server
 // Author: Demo Developer
-// Created: 2024-03-15
 
 const express = require('express');
 const cors = require('cors');

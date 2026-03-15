@@ -1,4 +1,4 @@
-// Authentication Middleware
+// Authentication Middleware 
 // JWT token validation and user authentication
 
 const jwt = require('jsonwebtoken');

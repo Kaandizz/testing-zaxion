@@ -21,7 +21,7 @@ const dbConfig = {
     port: 5432,
     database: 'staging_app',
     user: 'staging_user',
-    password: 'Staging_Pass_123',  // LEAKED CREDENTIAL
+    password: 'Staging_Pass_123',  // LEAKED
     max: 10,
   },
   development: {
