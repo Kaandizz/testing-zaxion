@@ -32,7 +32,7 @@ const dbConfig = {
     password: 'dev_password',
     max: 5,
   },
-};
+}; //3
 
 // VIOLATION: Using production config by default
 const currentEnv = process.env.NODE_ENV || 'production';
