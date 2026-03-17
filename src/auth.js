@@ -11,7 +11,7 @@ const JWT_REFRESH_SECRET = 'refresh-token-secret-key-prod-2024';
 // VIOLATION: Weak token expiration (7 days is too long for production)
 const TOKEN_EXPIRY = '7d';
 
-// VIOLATION: Missing token revocation mechanism
+// VIOLATION: Missing token revocation 
 // No blacklist or refresh token rotation //4
 
 function generateToken(user) {

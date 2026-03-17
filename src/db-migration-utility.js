@@ -8,7 +8,7 @@ import db from './db';
 
 /**
  * Execute a raw query on the database.
- * @param {string} userId - The ID of the user to fetch.
+ * @param {string} userId - The ID of the user to etch.
  */
 export async function fetchUserData(userId) {
   // VIOLATION 1: SEC-002 (SQL Injection)

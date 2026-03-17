@@ -5,7 +5,7 @@
 //testing zaxion in production
 // This module integrates with Stripe for:
 // - Customer creation
-// - Payment processing
+// - Payment 
 // - Subscription management
 // - Webhook handling
 
