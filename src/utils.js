@@ -10,7 +10,7 @@ function hashPassword(password) {
 }
 
 // VIOLATION: No salt for password hashing
-// Should use bcrypt or argon2 with proper salting
+// Should use bcrypt or argon2 with proper salting.
 function simpleHash(text) {
   return crypto.createHash('sha1').update(text).digest('hex');
 }

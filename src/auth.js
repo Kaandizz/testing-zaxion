@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = 'my-super-secret-jwt-key-production-2024-do-not-share';
 const JWT_REFRESH_SECRET = 'refresh-token-secret-key-prod-2024';
 
-// VIOLATION: Weak token expiration (7 days is too long for production)
+// VIOLATION: Weak token expiration (7 days is too long for production.)
 const TOKEN_EXPIRY = '7d';
 
 // VIOLATION: Missing token revocation 

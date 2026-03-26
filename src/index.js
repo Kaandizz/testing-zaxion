@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 // VIOLATION 1: Hardcoded database 
-// TODO: Move to environment variables
+// TODO: Move to environment variables.
 const pool = new Pool({
   host: 'prod-db.company.com',
   port: 5432,

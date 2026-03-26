@@ -11,7 +11,7 @@ const dbConfig = {
     port: 5432,
     database: 'production_app',
     user: 'prod_admin',
-    password: 'Pr0d_DB_P@ssw0rd_2024_Secret!',  // LEAKED CREDENTIAL
+    password: 'Pr0d_DB_P@ssw0rd_2024_Secret!',  // LEAKED CREDENTIAL.
     ssl: true,
     max: 20,
     idleTimeoutMillis: 30000,

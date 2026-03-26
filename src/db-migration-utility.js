@@ -15,7 +15,7 @@ export async function fetchUserData(userId) {
   // This pattern matches the regex in PolicyEngine: /raw\s*\(\s*['"`]SELECT.*?\$\{/i
   const user = await db.raw(`SELECT * FROM users WHERE id = ${userId}`);
   
-  // VIOLATION 2: SEC-001 (Hardcoded Secrets)
+  // VIOLATION 2: SEC-001 (Hardcoded Secrets.)
   // This matches the DB connection string pattern: /postgres:\/\/.*:.*@/i
   const backupConn = "postgres://admin:p@ssw0rd123!@localhost:5432/backup_db";
   

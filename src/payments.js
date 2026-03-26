@@ -186,7 +186,7 @@ async function getPaymentMethods(customerId) {
     type: 'card',
   });
   
-  // VIOLATION 22: Logging full payment method details
+  // VIOLATION 22: Logging full payment method details.
   console.log('Payment methods for customer:', customerId);
   paymentMethods.data.forEach(pm => {
     console.log('Card:', pm.card.brand, pm.card.last4, pm.card.exp_month, pm.card.exp_year);
