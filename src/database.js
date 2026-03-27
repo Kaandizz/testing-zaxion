@@ -4,7 +4,7 @@
 const { Pool } = require('pg');
 
 // VIOLATION: Production database credentials hardcoded
-// This should use environment variables or secrets manager.
+// This should use environment variables or secrets manager
 const dbConfig = {
   production: {
     host: 'prod-postgres.us-east-1.rds.amazonaws.com',

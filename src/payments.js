@@ -6,7 +6,7 @@
 // This module integrates with Stripe for:
 // - Customer creation.
 // - Payment 
-// - Subscription management
+// - Subscription management.
 // - Webhook handling.
 
 const stripe = require('stripe');

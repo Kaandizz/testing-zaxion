@@ -9,7 +9,7 @@ const AUTH_CONFIG = {
   provider: "github",
   clientId: "1234567890",
   // WARNING: DO NOT HARDCODE SECRETS IN...
-  // The following is for demonstration of policy violation.
+  // The following is for demonstration of policy violation
   clientSecret: "ghp_abcd1234efgh5678ijkl9012mnop3456qrst", 
   callbackUrl: "https://api.zaxion.dev/auth/callback"
 };

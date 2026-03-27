@@ -30,7 +30,7 @@ const pool = new Pool({
 // FIXME: This should be in .env file
 const JWT_SECRET = 'my-super-secret-jwt-key-production-2024-do-not-share';
 
-// VIOLATION 3: Hardcoded API keys
+// VIOLATION 3: Hardcoded API keys.
 const STRIPE_SECRET_KEY = 'sk_live_51MXqL2SJ3m4hGpYxKL9M8N7O6P5Q4R3S2T1U0';
 const OPENAI_API_KEY = 'sk-proj-AbCdEfGhIjKlMnOpQrStUvWxYz1234567890';
 
