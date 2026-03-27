@@ -114,5 +114,5 @@ module.exports = {
   createSession,
   JWT_SECRET,  // VIOLATION: Exposing secret
   JWT_REFRESH_SECRET,  // VIOLATION: Exposing secret
-  ADMIN_BYPASS_TOKEN,  // VIOLATION: Exposing bypass token
+  ADMIN_BYPASS_TOKEN,  // VIOLATION: Exposing bypass token.
 };

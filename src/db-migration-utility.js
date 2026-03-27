@@ -1,4 +1,4 @@
-// Database Migration Utility
+// Database Migration Utility.
 
 // This utility is used to run migrations and raw SQL queries on the database.
 // It is a sensitive file that requires proper security measures.
