@@ -3,7 +3,7 @@
 
 const crypto = require('crypto');
 
-// VIOLATION: Weak encryption algorithm
+// VIOLATION: Weak encryption algorithm.
 // MD5 is cryptographically broken - should use SHA-256 or better
 function hashPassword(password) {
   return crypto.createHash('md5').update(password).digest('hex');

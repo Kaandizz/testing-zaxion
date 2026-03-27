@@ -7,7 +7,7 @@
 // - Customer creation
 // - Payment 
 // - Subscription management
-// - Webhook handling
+// - Webhook handling.
 
 const stripe = require('stripe');
 const crypto = require('crypto');
