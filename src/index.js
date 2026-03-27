@@ -39,6 +39,112 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
+app.get('/login', (req, res) => {
+  res.send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test Login/Logout Page</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; }
+    .card { border: 1px solid #ccc; padding: 16px; max-width: 800px; }
+    pre { background: #f0f0f0; padding: 12px; }
+    button { padding: 8px 12px; margin-top: 8px; }
+    #tokenValue { word-break: break-all; }
+  </style>
+</head>
+<body>
+  <h1>Test Login/Logout (insecure by design)</h1>
+  <div class="card">
+    <h2>Known code credentials (from debug API)</h2>
+    <pre id="credentials">Loading ...</pre>
+  </div>
+
+  <div class="card">
+    <h2>Login Form</h2>
+    <label>Username</label><br /><input id="username" value="admin" /><br />
+    <label>Password</label><br /><input id="password" type="password" value="admin123" /><br />
+    <button id="loginButton">Login</button>
+    <button id="logoutButton" style="margin-left:8px;">Logout</button>
+    <p><strong>Token:</strong> <span id="tokenValue">(none)</span></p>
+    <div id="loginResult"></div>
+  </div>
+
+  <script>
+    let currentToken = null;
+
+    async function loadCredentials() {
+      try {
+        const r = await fetch('/api/debug/config');
+        const cfg = await r.json();
+        const exposed = {
+          api: {
+            login: '/api/login',
+            logout: '/api/logout',
+            debugConfig: '/api/debug/config',
+          },
+          db: cfg.database,
+          jwtSecret: cfg.jwtSecret,
+          apiKeys: cfg.apiKeys,
+          testAdmin: { username: 'admin', password: 'admin123' },
+        };
+        document.getElementById('credentials').textContent = JSON.stringify(exposed, null, 2);
+      } catch (err) {
+        document.getElementById('credentials').textContent = 'Failed to load: ' + err;
+      }
+    }
+
+    document.getElementById('loginButton').addEventListener('click', async () => {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const resp = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+      const result = document.getElementById('loginResult');
+      if (resp.ok) {
+        const data = await resp.json();
+        currentToken = data.token;
+        document.getElementById('tokenValue').textContent = currentToken;
+        result.textContent = 'Login successful.';
+      } else {
+        const errData = await resp.json();
+        result.textContent = 'Login failed: ' + (errData.error || JSON.stringify(errData));
+      }
+    });
+
+    document.getElementById('logoutButton').addEventListener('click', async () => {
+      if (!currentToken) {
+        document.getElementById('loginResult').textContent = 'No session token to logout.';
+        return;
+      }
+
+      const resp = await fetch('/api/logout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + currentToken,
+        },
+      });
+      if (resp.ok) {
+        currentToken = null;
+        document.getElementById('tokenValue').textContent = '(none)';
+        document.getElementById('loginResult').textContent = 'Logged out successfully.';
+      } else {
+        const errData = await resp.json();
+        document.getElementById('loginResult').textContent = 'Logout failed: ' + (errData.error || JSON.stringify(errData));
+      }
+    });
+
+    loadCredentials();
+  </script>
+</body>
+</html>
+`);
+});
+
 // VIOLATION 4: Missing input validation
 // No validation on user input - security risk
 app.post('/api/users', async (req, res) => {
@@ -122,6 +228,20 @@ app.post('/api/login', async (req, res) => {
   } else {
     res.status(401).json({ error: 'Invalid credentials' });
   }
+});
+
+// Simple test logout endpoint (stateless demo)
+const invalidatedTokens = new Set();
+app.post('/api/logout', (req, res) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader) {
+    return res.status(400).json({ error: 'Missing Authorization header' });
+  }
+
+  const token = authHeader.startsWith('Bearer ') ? authHeader.split(' ')[1] : authHeader;
+  invalidatedTokens.add(token);
+
+  res.json({ success: true, message: 'Logged out (token invalidated in test store)' });
 });
 
 // VIOLATION 12: Missing rate limiting
