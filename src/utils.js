@@ -99,9 +99,9 @@ function deserializeObject(data) {
 // VIOLATION: No CSP (Content Security Policy) headers
 // Should implement CSP to prevent XSS
 
-// VIOLATION: Sensitive data in comments
+// VIOLATION: Sensitive data in comments.
 // Database credentials: postgres://admin:SuperSecret123@prod-db.com:5432/mydb Leaked.
-// API Key: sk-prod-AbCdEfGhIjKlMnOpQrStUvWxYz
+// API Key: sk-prod-AbCdEfGhIjKlMnOpQrStUvWxYz.
 // These should never be in code comments!
 
 module.exports = {

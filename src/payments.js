@@ -4,9 +4,9 @@
 // Date: 2024-03-15
 //testing zaxion in production
 // This module integrates with Stripe for:
-// - Customer creation.
+// - Customer creation..
 // - Payment 
-// - Subscription management.
+// - Subscription management
 // - Webhook handling.
 
 const stripe = require('stripe');
