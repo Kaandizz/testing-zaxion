@@ -3,4 +3,4 @@ def greet(name: str) -> str:
     return f"Hello, {name}"
 
   console.log('debug: greeting', name);
-    
+    # This is a debug statement to log the greeting process
